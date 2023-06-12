@@ -8,7 +8,8 @@ import {ClientSafeProvider} from 'next-auth/react'
 import {BuiltInProviderType} from "@node_modules/next-auth/providers";
 
 const Nav = () => {
-    const isUserLoggedIn = true;
+    const {data: session} = useSession();
+    console.log('session: ', session)
     const [providers, setProviders] = useState<Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider> | null>(null)
     const [toggleDropdown, setToggleDropdown] = useState(false)
     useEffect(() => {
@@ -35,7 +36,7 @@ const Nav = () => {
             </Link>
             <div className="sm:flex hidden">
                 {
-                    isUserLoggedIn ? (
+                    session ? (
                         <div className="flex gap-3 md:gap-5">
                             <Link href="/create-prompt" className="black_btn">
                                 Create post
@@ -73,7 +74,7 @@ const Nav = () => {
             </div>
 
             <div className="sm:hidden flex relative z-50">
-                {isUserLoggedIn ? (
+                {session ? (
                     <div className="flex">
                         <Image
                             src="assets/images/logo.svg"

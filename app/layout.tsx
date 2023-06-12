@@ -1,6 +1,7 @@
 import React from "react";
 import '@styles/global.css'
 import Nav from "@components/Nav";
+import Provider from "@components/Provider";
 // import Provider from "@components/Provider";
 export const metadata = {
     title: "PRMPTY",
@@ -12,11 +13,13 @@ const RootLayout = ({children}: { children: React.ReactNode }
         return (
             <html lang="en">
             <body>
-            <div className="main">
-                <div className="gradient"/>
-            </div>
-            <Nav/>
-            <main className="app">{children}</main>
+            <Provider session={null}>
+                <div className="main">
+                    <div className="gradient"/>
+                </div>
+                <Nav/>
+                <main className="app">{children}</main>
+            </Provider>
             </body>
             </html>
         );
