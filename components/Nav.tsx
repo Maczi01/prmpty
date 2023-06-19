@@ -9,9 +9,12 @@ import {BuiltInProviderType} from "@node_modules/next-auth/providers";
 
 const Nav = () => {
     const {data: session} = useSession();
+
     console.log('session: ', session)
+
     const [providers, setProviders] = useState<Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider> | null>(null)
     const [toggleDropdown, setToggleDropdown] = useState(false)
+
     useEffect(() => {
         const fetchProviders = async () => {
             const response = await getProviders();
@@ -61,7 +64,7 @@ const Nav = () => {
                                     <button
                                         type="button"
                                         key={provider.name}
-                                        onClick={() => signIn(provider.id)}
+                                        onClick={async () => await signIn(provider.id)}
                                         className="blck_btn"
                                     >
                                         Sign in
