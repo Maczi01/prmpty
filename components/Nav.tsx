@@ -10,17 +10,15 @@ import {BuiltInProviderType} from "@node_modules/next-auth/providers";
 const Nav = () => {
     const {data: session} = useSession();
 
-    console.log('session: ', session)
-
     const [providers, setProviders] = useState<Record<LiteralUnion<BuiltInProviderType, string>, ClientSafeProvider> | null>(null)
     const [toggleDropdown, setToggleDropdown] = useState(false)
 
     useEffect(() => {
-        const fetchProviders = async () => {
+        const setUpProviders = async () => {
             const response = await getProviders();
             setProviders(response);
         };
-        fetchProviders();
+        setUpProviders();
     }, [])
 
     return (
@@ -44,15 +42,15 @@ const Nav = () => {
                             <Link href="/create-prompt" className="black_btn">
                                 Create post
                             </Link>
-                            <button type='button' onClick={() => signOut()} className="outline_btn">
+                            <button type='button' onClick={() => signOut()} className="black_btn outline_btn">
                                 Sign out
                             </button>
-                            <Link href="/login" className="outline_btn">
+                            <Link href="/login" >
                                 <Image
-                                    src="assets/images/logo.svg"
+                                    src={session?.user?.image as string}
                                     width={37}
                                     height={37}
-                                    alt="user"
+                                    alt="profile"
 
                                 />
                             </Link>
@@ -65,7 +63,7 @@ const Nav = () => {
                                         type="button"
                                         key={provider.name}
                                         onClick={async () => await signIn(provider.id)}
-                                        className="blck_btn"
+                                        className="black_btn"
                                     >
                                         Sign in
                                     </button>
@@ -76,11 +74,11 @@ const Nav = () => {
                 }
             </div>
 
-            <div className="sm:hidden flex relative z-50">
+            <div className="sm:hidden flex relative">
                 {session ? (
                     <div className="flex">
                         <Image
-                            src="assets/images/logo.svg"
+                            src={session?.user?.image as string}
                             width={37}
                             height={37}
                             alt="user"
@@ -122,7 +120,7 @@ const Nav = () => {
                                     type="button"
                                     key={provider.name}
                                     onClick={() => signIn(provider.id)}
-                                    className="blck_btn"
+                                    className="black_btn"
                                 >
                                     Sign in
                                 </button>
