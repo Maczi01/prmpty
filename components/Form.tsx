@@ -1,5 +1,5 @@
-import React from "react";
-import Link from "next/link";
+import React from 'react';
+import Link from 'next/link';
 
 type Props = {
   type: string;
@@ -43,7 +43,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }: Props) => {
             <span className="font-normal">(#product, #development, #idea)</span>
           </span>
           <input
-            value={post.prompt}
+            value={post.tag}
             onChange={(e) => setPost({ ...post, tag: e.target.value })}
             placeholder="#tag"
             required
