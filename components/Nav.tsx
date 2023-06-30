@@ -18,7 +18,7 @@ const Nav = () => {
             const response = await getProviders();
             setProviders(response);
         };
-        setUpProviders();
+        void setUpProviders().then(r => r);
     }, [])
 
     return (
@@ -48,7 +48,7 @@ const Nav = () => {
 
                         <Link href='/profile'>
                             <Image
-                                src={session?.user.image}
+                                src={session?.user?.image ?? ''}
                                 width={37}
                                 height={37}
                                 className='rounded-full'
@@ -65,7 +65,7 @@ const Nav = () => {
                                     type='button'
                                     key={provider.name}
                                     onClick={() => {
-                                        signIn(provider.id);
+                                        void signIn(provider.id).then(r => r);
                                     }}
                                     className='black_btn'
                                 >
@@ -82,7 +82,7 @@ const Nav = () => {
 ? (
                     <div className='flex'>
                         <Image
-                            src={session?.user.image}
+                            src={session?.user.image ?? ''}
                             width={37}
                             height={37}
                             className='rounded-full'
@@ -110,7 +110,7 @@ const Nav = () => {
                                     type='button'
                                     onClick={() => {
                                         setToggleDropdown(false);
-                                        signOut();
+                                        void signOut().then(r => r);
                                     }}
                                     className='mt-5 w-full black_btn'
                                 >
@@ -128,7 +128,7 @@ const Nav = () => {
                                     type='button'
                                     key={provider.name}
                                     onClick={() => {
-                                        signIn(provider.id);
+                                        void signIn(provider.id).then(r => r);
                                     }}
                                     className='black_btn'
                                 >
