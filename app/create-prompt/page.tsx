@@ -14,18 +14,19 @@ const CreatePrompt = () => {
         prompt: '',
         tag: '',
     });
+    console.log('session:', session);
 
     const createPrompt = async (e: any) => {
         e.preventDefault();
         setSubmitting(true);
 
         try {
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
             const response = await fetch('api/prompt/new', {
                 method: 'POST',
                 body: JSON.stringify({
                     prompt: post.prompt,
+                    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                    // @ts-ignore
                     userId: session?.user?.id,
                     tag: post.tag,
                 }),

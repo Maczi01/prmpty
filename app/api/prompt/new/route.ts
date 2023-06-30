@@ -1,9 +1,10 @@
 import Prompt from '@models/prompt';
 import { connectToDB } from '@utils/database';
+import { Request } from '@node_modules/next/dist/compiled/@edge-runtime/primitives/fetch';
 
 export const POST = async (request: Request) => {
     const { userId, prompt, tag } = await request.json();
-
+    console.log({ userId });
     try {
         await connectToDB();
         const newPrompt = new Prompt({ creator: userId, prompt, tag });
@@ -11,7 +12,6 @@ export const POST = async (request: Request) => {
         await newPrompt.save();
         return new Response(JSON.stringify(newPrompt), { status: 201 })
     } catch (error) {
-        console.log('error', error);
         return new Response('Failed to create a new prompt', { status: 500 });
     }
 }
