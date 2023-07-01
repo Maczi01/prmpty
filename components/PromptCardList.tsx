@@ -1,6 +1,5 @@
 import PromptCard from '@components/PromptCard';
 import { Prompt } from '@types';
-import { ChangeEvent } from 'react';
 
 interface PromptCardListProps {
   data: Prompt[];

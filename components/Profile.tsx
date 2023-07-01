@@ -1,10 +1,5 @@
 'use client';
 
-import { MouseEventHandler, useEffect, useState } from 'react';
-import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
-
-import { session } from '@node_modules/next-auth/core/routes';
 import PromptCard from '@components/PromptCard';
 import { Prompt } from '@types';
 
