@@ -8,9 +8,9 @@ import { Session } from '@node_modules/next-auth';
 const Provider = ({ children, session }:
                       { children?: React.ReactNode, session?: Session }) => {
     return (
-        <SessionProvider session={session}>
-            {children}
-        </SessionProvider>
+      <SessionProvider session={session}>
+        {children}
+      </SessionProvider>
     )
 }
 

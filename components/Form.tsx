@@ -1,18 +1,23 @@
-import React from 'react';
+import React, { ChangeEvent, FormEvent } from 'react';
 import Link from 'next/link';
 
-type Props = {
-  type: string;
+interface Props {
+  type: string,
   post: {
-    prompt: string;
-    tag: string;
+    prompt: string,
+    tag: string,
   };
-  setPost: any;
-  submitting: boolean;
-  handleSubmit: any;
-};
+  setPost: (post: { tag: string; prompt: string }) => void,
+  submitting: boolean,
+  handleSubmit: (event: FormEvent<HTMLFormElement>) => void,
+}
 
 const Form = ({ type, post, setPost, submitting, handleSubmit }: Props) => {
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    handleSubmit(e);
+  };
+
   return (
     <section className="w-full max-w-full flex-start flex-col">
       <h1 className="head_text text-left">
@@ -22,7 +27,7 @@ const Form = ({ type, post, setPost, submitting, handleSubmit }: Props) => {
         {type} and share your prompt with the world.
       </p>
       <form
-        onSubmit={handleSubmit}
+        onSubmit={onSubmit}
         className="mt-10 w-full max-w-2xl flex-col gap-7 glassmorphism"
       >
         <label>

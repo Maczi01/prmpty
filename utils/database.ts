@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { ConnectOptions } from 'mongoose';
 
 let isConnected = false;
 
@@ -14,7 +14,7 @@ export const connectToDB = async () => {
             dbName: 'prmpty',
             useNewUrlParser: true,
             useUnifiedTopology: true,
-        } as any);
+        } as ConnectOptions);
         isConnected = true;
         console.log('=> using new database connection')
     } catch (err) {

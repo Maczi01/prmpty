@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 import Profile from '@components/Profile';
+import { Prompt } from '@types';
 
 const MyProfile = () => {
     const router = useRouter();
@@ -21,18 +22,19 @@ const MyProfile = () => {
         if (session?.user?.id) void fetchPosts().then(r => r);
     }, [session?.user?.id]);
 
-    const handleEdit = (post: any) => {
+    const handleEdit = (post: Prompt) => {
+        console.log({ post })
         router.push(`/update-prompt?id=${post._id}`);
     };
 
-    const handleDelete = async (post: any) => {
+    const handleDelete = async (post: Prompt) => {
         const hasConfirmed = confirm('Are you sure you want to delete this prompt?');
         if (!hasConfirmed) return;
         try {
             await fetch(`/api/prompt/${post._id.toString()}`, {
                 method: 'DELETE',
             });
-            const filteredPosts = myPosts.filter((p: any) => p._id !== post._id);
+            const filteredPosts = myPosts.filter((p: Prompt) => p._id !== post._id);
             setMyPosts(filteredPosts);
         } catch (err) {
             console.error(err);
@@ -40,13 +42,13 @@ const MyProfile = () => {
     };
 
     return (
-        <Profile
-            name='My'
-            desc='Welcome to your personalized profile page. Share your exceptional prompts and inspire others with the power of your imagination'
-            data={myPosts}
-            handleEdit={handleEdit}
-            handleDelete={handleDelete}
-        />
+      <Profile
+        name='My'
+        desc='Welcome to your personalized profile page. Share your exceptional prompts and inspire others with the power of your imagination'
+        data={myPosts}
+        handleEdit={handleEdit}
+        handleDelete={handleDelete}
+      />
     );
 };
 

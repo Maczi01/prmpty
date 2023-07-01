@@ -38,18 +38,20 @@
     "no-shadow": "off",
     "@typescript-eslint/no-shadow": ["off"],
     "@typescript-eslint/explicit-function-return-type": ["off"],
-    "max-len": ["warn", { "code": 80 }],
+    "max-len": ["warn", { "code": 100 }],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": ["warn"],
     "import/prefer-default-export": "off",
-    "react/jsx-first-prop-new-line": [1],
-    "react/prop-types": "off",
+    "react/jsx-first-prop-new-line": ["warn", "multiline"],
+    "react/jsx-indent": ["warn", 2],
+    "react/jsx-indent-props": ["warn", 2],
+    "react/jsx-closing-tag-location": ["warn"],
+    "react/jsx-closing-bracket-location": ["warn"],
     "@typescript-eslint/semi": ["off"],
     "@typescript-eslint/space-before-function-paren": [0],
     "@typescript-eslint/triple-slash-reference": ["off"],
     "@typescript-eslint/comma-dangle": ["off"],
     "react/react-in-jsx-scope": "off",
-    "@typescript-eslint/consistent-type-definitions": ["off"],
     "@typescript-eslint/member-delimiter-style": ["off"],
     "@typescript-eslint/prefer-ts-expect-error": ["off"],
     "@typescript-eslint/no-misused-promises": ["off"],
@@ -60,6 +62,13 @@
     "@typescript-eslint/indent": ["off"],
     "@typescript-eslint/no-empty-function": ["off"],
     "@typescript-eslint/no-dynamic-delete": ["off"],
-    "multiline-ternary": "warn"
+    "multiline-ternary": "warn",
+    "import/no-unused-modules": [
+      "error",
+      {
+        "missingExports": true,
+        "unusedExports": true
+      }
+    ]
   }
 }

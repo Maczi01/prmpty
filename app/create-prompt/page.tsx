@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { ChangeEvent, FormEvent, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 
@@ -16,7 +16,7 @@ const CreatePrompt = () => {
     });
     console.log('session:', session);
 
-    const createPrompt = async (e: any) => {
+    const createPrompt = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         setSubmitting(true);
 
@@ -41,13 +41,13 @@ const CreatePrompt = () => {
     };
 
     return (
-        <Form
-            type="Create"
-            post={post}
-            setPost={setPost}
-            submitting={submitting}
-            handleSubmit={createPrompt}
-        />
+      <Form
+        type="Create"
+        post={post}
+        setPost={setPost}
+        submitting={submitting}
+        handleSubmit={createPrompt}
+      />
     );
 };
 export default CreatePrompt;
