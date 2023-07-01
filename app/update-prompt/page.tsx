@@ -17,29 +17,29 @@ const EditPrompt = () => {
     prompt: '',
     tag: '',
   });
-  console.log(promptId)
+  console.log(promptId);
 
   const updatePrompt = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setSubmitting(true)
+    e.preventDefault();
+    setSubmitting(true);
     try {
-      if (!promptId) return alert('Prompt not found')
+      if (!promptId) return alert('Prompt not found');
       const response = await fetch(`/api/prompt/${promptId}`, {
         method: 'PATCH',
         body: JSON.stringify({
           prompt: post.prompt,
           tag: post.tag,
-        })
+        }),
       });
       if (response.ok) {
-        router.push('/')
+        router.push('/');
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     } finally {
-      setSubmitting(false)
+      setSubmitting(false);
     }
-  }
+  };
 
   useEffect(() => {
     const getPromptDetails = async () => {
@@ -49,9 +49,9 @@ const EditPrompt = () => {
         prompt: data?.prompt,
         tag: data?.tag,
       });
-    }
-    if (promptId) getPromptDetails()
-  }, [promptId])
+    };
+    if (promptId) getPromptDetails();
+  }, [promptId]);
 
   return (
     <Form

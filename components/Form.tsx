@@ -2,14 +2,14 @@ import React, { ChangeEvent, FormEvent } from 'react';
 import Link from 'next/link';
 
 interface Props {
-  type: string,
+  type: string;
   post: {
-    prompt: string,
-    tag: string,
+    prompt: string;
+    tag: string;
   };
-  setPost: (post: { tag: string; prompt: string }) => void,
-  submitting: boolean,
-  handleSubmit: (event: FormEvent<HTMLFormElement>) => void,
+  setPost: (post: { tag: string; prompt: string }) => void;
+  submitting: boolean;
+  handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
 }
 
 const Form = ({ type, post, setPost, submitting, handleSubmit }: Props) => {
