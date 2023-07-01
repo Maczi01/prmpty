@@ -1,20 +1,6 @@
 'use client';
 import { useState, useEffect } from 'react';
-import PromptCard from '@components/PromptCard';
-
-const PromptCardList = ({ data, handleTagClick }: any) => {
-    return (
-        <div className="mt-16 prompt_layout">
-            {data.map((post: any, index: number) => (
-                <PromptCard
-                    key={index}
-                    post={post}
-                    handleTagClick={handleTagClick}
-                />
-            ))}
-        </div>
-    );
-}
+import PromptCardList from '@components/PromptCardList';
 
 const Feed = () => {
     const [searchText, setSearchText] = useState('');
@@ -34,7 +20,7 @@ const Feed = () => {
                 console.log(error);
             }
         }
-        fetchPosts().then(r => console.log(r));
+        void fetchPosts().then(r => console.log(r));
     }, [searchText]);
 
     return (
@@ -49,7 +35,6 @@ const Feed = () => {
                     className="search_input peer"
                 />
             </form>
-
             <PromptCardList
                 data={posts}
                 handleTagClick={handleSeatchTextChange}
