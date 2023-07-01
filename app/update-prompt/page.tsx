@@ -41,14 +41,24 @@ const EditPrompt = () => {
 
   useEffect(() => {
     const getPromptDetails = async () => {
-      const response = await fetch(`/api/prompt/${promptId}`);
-      const data = await response.json();
-      setPost({
-        prompt: data?.prompt,
-        tag: data?.tag,
-      });
+      try {
+        const response = await fetch(`/api/prompt/${promptId}`);
+        const data = await response.json();
+        setPost({
+          prompt: data?.prompt,
+          tag: data?.tag,
+        });
+      } catch (error) {
+        // Handle the error appropriately, e.g., display an error message
+        console.error('Failed to fetch prompt details:', error);
+      }
     };
-    if (promptId) getPromptDetails();
+
+    if (promptId) {
+      getPromptDetails().catch((error) => {
+        console.error('Failed to get prompt details:', error);
+      });
+    }
   }, [promptId]);
 
   return (
