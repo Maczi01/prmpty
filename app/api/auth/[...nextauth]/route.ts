@@ -13,15 +13,8 @@ const handler = NextAuth({
     ],
     callbacks: {
         async session({ session }) {
-            // store the user id from MongoDB to session
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
-            const sessionUser = await User.findOne({ email: session?.user.email });
-            // store the user id from MongoDB to session
-            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-            // @ts-ignore
+            const sessionUser = await User.findOne({ email: session?.user?.email });
             session.user.id = sessionUser._id.toString();
-
             return session;
         },
         signIn: async function ({ account, profile, user, credentials }) {

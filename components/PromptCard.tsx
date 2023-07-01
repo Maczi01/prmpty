@@ -14,8 +14,7 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }: any) => 
 
     const handleProfileClick = () => {
         console.log(post);
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
+
         if (post.creator._id === session?.user.id) return router.push('/profile');
 
         router.push(`/profile/${post.creator._id}?name=${post.creator.username}`);
@@ -24,9 +23,7 @@ const PromptCard = ({ post, handleEdit, handleDelete, handleTagClick }: any) => 
     const handleCopy = () => {
         setCopied(post.prompt);
         void navigator.clipboard.writeText(post.prompt);
-        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-        // @ts-ignore
-        setTimeout(() => setCopied(false), 3000);
+        setTimeout(() => setCopied(''), 3000);
     };
 
     const onClick = () => handleTagClick() && handleTagClick(post.tag);
