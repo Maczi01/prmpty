@@ -22,7 +22,7 @@ const Feed = () => {
         console.log(error);
       }
     };
-    void fetchPosts().then((r) => r);
+    fetchPosts();
   }, [searchText]);
 
   const handleTagClick = (tagName: string) => {

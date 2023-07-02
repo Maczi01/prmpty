@@ -49,7 +49,6 @@ const EditPrompt = () => {
           tag: data?.tag,
         });
       } catch (error) {
-        // Handle the error appropriately, e.g., display an error message
         console.error('Failed to fetch prompt details:', error);
       }
     };

@@ -28,7 +28,7 @@ const Nav = () => {
       const response = await getProviders();
       setProviders(response);
     };
-    void setUpProviders().then((r) => r);
+    setUpProviders();
   }, []);
 
   return (
@@ -54,7 +54,7 @@ const Nav = () => {
 
     <button
       type="button"
-      onClick={() => signOut()}
+      onClick={async () => await signOut()}
       className="outline_btn"
     >
       Sign Out
