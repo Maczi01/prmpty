@@ -19,7 +19,9 @@ const UserProfile = ({ params }: { params: IParams }) => {
       setUserPosts(data);
     };
 
-    if (params?.id) fetchPosts().catch(e => console.log(e));
+    if (params?.id) {
+      void fetchPosts().catch((e) => console.log(e));
+    }
   }, [params.id]);
 
   if (!userName) return null;
@@ -27,7 +29,8 @@ const UserProfile = ({ params }: { params: IParams }) => {
   return (
     <Profile
       name={userName}
-      desc={`Welcome to ${userName}'s personalized profile page. Explore ${userName}'s exceptional prompts and be inspired by the power of their imagination`}
+      desc={`Welcome to ${userName}'s personalized profile page.
+       Explore ${userName}'s exceptional prompts and be inspired by the power of their imagination`}
       data={userPosts}
     />
   );
