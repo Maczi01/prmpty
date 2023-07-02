@@ -28,7 +28,7 @@ const Nav = () => {
       const response = await getProviders();
       setProviders(response);
     };
-    void setUpProviders().catch(e => console.log(e));
+    void setUpProviders().then(e => (e));
   }, []);
 
   return (

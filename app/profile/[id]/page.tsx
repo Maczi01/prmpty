@@ -20,7 +20,7 @@ const UserProfile = ({ params }: { params: IParams }) => {
     };
 
     if (params?.id) {
-      void fetchPosts().catch((e) => console.log(e));
+      void fetchPosts().then((e) => (e));
     }
   }, [params.id]);
 
