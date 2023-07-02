@@ -20,7 +20,7 @@ const MyProfile = () => {
       setMyPosts(data);
     };
     if (session?.user?.id) {
-      void fetchPosts().catch(e => console.log(e))
+      fetchPosts().then(e => console.log(e))
     }
   }, [session?.user?.id]);
 
