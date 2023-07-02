@@ -14,4 +14,4 @@ React, Next, Node, TailwindCSS
 
 ## Demo
 
-[Demo on Vercel](https://prmpty-git-master-maczi01.vercel.app/)
+[Demo on Vercel](https://prmpty.vercel.app/)
