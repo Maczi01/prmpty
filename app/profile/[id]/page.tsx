@@ -19,7 +19,7 @@ const UserProfile = ({ params }: { params: IParams }) => {
       setUserPosts(data);
     };
 
-    if (params?.id) fetchPosts();
+    if (params?.id) void fetchPosts();
   }, [params.id]);
 
   if (!userName) return null;

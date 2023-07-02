@@ -19,7 +19,7 @@ const MyProfile = () => {
       const data = await response.json();
       setMyPosts(data);
     };
-    if (session?.user?.id) fetchPosts();
+    if (session?.user?.id) void fetchPosts();
   }, [session?.user?.id]);
 
   const handleEdit = (post: Prompt) => {
