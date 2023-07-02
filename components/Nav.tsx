@@ -79,7 +79,7 @@ const Nav = () => {
                   type="button"
                   key={provider.name}
                   onClick={() => {
-                    void signIn(provider.id).then((r) => r);
+                    signIn(provider.id).then((r) => console.log(r));
                   }}
                   className="black_btn"
                 >
@@ -142,7 +142,7 @@ const Nav = () => {
                   type="button"
                   key={provider.name}
                   onClick={() => {
-                    void signIn(provider.id).then((r) => r);
+                    signIn(provider.id).then((r) => console.log(r));
                   }}
                   className="black_btn"
                 >
